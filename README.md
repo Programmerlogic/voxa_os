@@ -45,13 +45,7 @@ The chatbot's intelligence is strictly grounded in the following processed text 
 1. Navigate to the internal Superstore Analytics web portal.
 2. Click the floating chat widget in the bottom right corner.
 3. Use one of the pre-configured quick-action buttons (e.g., "Top VIP Customers", "Evaluate Discounts") to start a guided investigation, or simply type a natural language question into the chat box.
-### Example Queries
-* **Query:** "What is our overall profit margin?"
-  * **Expected Response:** "Our overall profit margin is 12.47%. However, 18.7% of our orders are currently loss-making."
-* **Query:** "Who are our top VIP customers?"
-  * **Expected Response:** "Based on our executive metrics, our top VIPs include [Customer Name] with a total lifetime spend of $[Amount]."
-* **Query:** "Why are we losing money in the South region?"
-  * **Expected Response:** "The losses in the South are heavily correlated with excessive discounts. Orders with a discount greater than 30% result in an average loss of $-107.21."
+
 ### Limitations & Future Work
 * **Current Limitations:** Due to chatbot platform upload constraints, the bot currently operates on an aggregated "Executive Cheat Sheet." It cannot perform granular, row-by-row lookups for single, low-value transactions that occurred years ago.
 * **Future Work:** Replace the static `.txt` Knowledge Base with an External Tool API connection to a live SQL Database (like BigQuery or PostgreSQL), allowing the agent to generate and execute SQL queries in real-time for unlimited data depth.
@@ -81,22 +75,17 @@ The underlying data powering this AI originates from the Superstore dataset. By 
 ## 5. File Preparation
 To maintain the chatbot's accuracy, the knowledge base files must be updated periodically:
 1. Download the latest `Superstore.csv` export.
-2. Run the provided Python aggregation script (`generate_kb_files.py`) locally.
-3. The script will output well-formatted `.txt` files containing natural language narratives of the data. Ensure all files use UTF-8 encoding.
-4. Upload the generated files to the VoiceOS Knowledge Base, replacing the older versions.
+2. The script will output well-formatted `.txt` files containing natural language narratives of the data. Ensure all files use UTF-8 encoding.
+3. Upload the generated files to the VoiceOS Knowledge Base, replacing the older versions.
 
-## 6. Verification
-* Review this documentation for clarity and completeness prior to stakeholder handover.
-* Test the live chatbot with sample queries to ensure it fetches correct information exclusively from the uploaded `.txt` files.
-* Confirm that the initial welcome message and quick-action buttons trigger the correct classification logic.
 
-## 7. Relevant Files
+
+## 6. Relevant Files
 * `app.py`: Main Streamlit front-end logic and widget injection code.
-* `generate_kb_files.py`: Data aggregation script for converting CSV rows into compressed RAG-optimized text.
 * `Executive_Cheat_Sheet_Top_Metrics.txt`: Core knowledge base source file.
 * `1_Master_Executive_Summaries.txt`: Core knowledge base source file.
 
-## 8. Decisions Log
+## 7. Decisions Log
 * **Data Aggregation Pivot:** Initially attempted to upload 10,000 distinct transactional narratives. Due to strict platform file size and token limits causing upload timeouts, the architecture was pivoted to aggregate data into "Entity Profiles" and an "Executive Cheat Sheet," successfully bypassing platform restrictions while retaining critical BI value.
 * **Knowledge Base Isolation:** Decided to use only the provided `.txt` files generated from the dataset to strictly ground the AI and prevent hallucinations based on external internet data.
 * **Documentation Format:** The documentation is written in Markdown (`.md`) for easy readability, version control compatibility, and seamless sharing across developer teams.
