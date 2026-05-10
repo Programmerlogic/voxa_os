@@ -88,4 +88,4 @@ To maintain the chatbot's accuracy, the knowledge base files must be updated per
 ## 7. Decisions Log
 * **Data Aggregation Pivot:** Initially attempted to upload 10,000 distinct transactional narratives. Due to strict platform file size and token limits causing upload timeouts, the architecture was pivoted to aggregate data into "Entity Profiles" and an "Executive Cheat Sheet," successfully bypassing platform restrictions while retaining critical BI value.
 * **Knowledge Base Isolation:** Decided to use only the provided `.txt` files generated from the dataset to strictly ground the AI and prevent hallucinations based on external internet data.
-* **Documentation Format:** The documentation is written in Markdown (`.md`) for easy readability, version control compatibility, and seamless sharing across developer teams.
+
