@@ -15,10 +15,32 @@ The architecture consists of three main components:
 1. **Data Engineering (Python/Pandas):** Scripts that clean a raw 10,000-row CSV and aggregate the data into highly compressed `.txt` summaries (e.g., VIP Customer Profiles, Top Product Profits, Regional Risks).
 2. **AI Orchestration (VoiceOS):** The conversational agent framework where the `.txt` files are uploaded to the Knowledge Base. It features "Global Classifications" to route user intent and multi-turn "Task Configurations" (like *Evaluate Discount Impact*) to proactively investigate business problems.
 3. **Front-End Deployment (JavaScript/Streamlit):** A lightweight embed snippet that injects the AI chat interface into the existing company web portal.
-### Knowledge Base
-The AI relies strictly on the following processed text documents to prevent hallucination:
-* `1_Master_Executive_Summaries.txt`: Contains macro-level data on overall profitability, sales performance, supply chain efficiency, and market insights.
-* `Executive_Cheat_Sheet_Top_Metrics.txt`: A highly compressed file containing lifetime spend data for the Top 100 VIP Customers, Top 100 Profitable Products, and Top 50 Risk (Money-Losing) Products.
+## Knowledge Base File Index & Purposes
+The chatbot's intelligence is strictly grounded in the following processed text files. Each file serves a specific analytical purpose to ensure the AI can answer distinct types of business questions accurately:
+
+### 1. Profitability_and_Cost_Optimization.txt
+* **Purpose:** To identify margin bleed and track financial efficiency. 
+* **AI Usage:** The AI uses this file to answer questions about the 18.7% of loss-making orders, identify specific money-losing products (like the Cubify 3D Printers), and calculate the negative financial impact of high discount strategies.
+
+### 2. Sales_Performance_and_Growth.txt
+* **Purpose:** To track top-line revenue, year-over-year growth trends, and historical volume.
+* **AI Usage:** The AI relies on this to report macro-level business health, identify the top 3 best-selling products by total revenue, and compare high-level regional sales volumes.
+
+### 3. Market_and_Regional_Insights.txt
+* **Purpose:** To provide geographic performance mapping and identify localized market risks.
+* **AI Usage:** The AI scans this to pinpoint highly profitable states (like California and New York) while actively flagging high-risk, unprofitable areas (like Texas and Ohio) for executive intervention.
+
+### 4. Customer_Segmentation_and_Behavior.txt
+* **Purpose:** To analyze customer loyalty, segment purchasing behavior, and track Average Order Value (AOV).
+* **AI Usage:** The AI uses this data to answer questions regarding customer retention (e.g., the 99.4% repeat customer rate), differentiate between Consumer and Corporate buying habits, and recommend targeted loyalty programs.
+
+### 5. Supply_Chain_and_Operations_Efficiency.txt
+* **Purpose:** To track shipping modes, delivery timelines, and fulfillment logistics.
+* **AI Usage:** The AI evaluates this file to answer operational questions, such as comparing the 5.0-day average of Standard Class shipping against faster modes, and determining if expedited shipping negatively impacts overall profit margins.
+
+### 6. Advanced_Superstore_Insights.txt
+* **Purpose:** To provide deep-dive strategic models (Cross-selling opportunities, BCG Matrix classification, and price elasticity).
+* **AI Usage:** This elevates the AI from a simple reporter to a senior strategist. It uses this file to recommend product bundles (Market Basket Analysis) and classify sub-categories into strategic buckets (Stars, Cash Cows, Dogs, and Question Marks).
 ### Usage Instructions
 1. Navigate to the internal Superstore Analytics web portal.
 2. Click the floating chat widget in the bottom right corner.
