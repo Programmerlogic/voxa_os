@@ -148,7 +148,7 @@ else:
 widget_injection_code = """
 <script>
     window.parent.BrainWidgetConfig = {
-       
+        "xApiKey": "",
         "session_id": "session_1777754502_ffd28c6a",
         "tenant_id": "eb29d285-88d4-4891-b791-d23910dc130f"
     };
