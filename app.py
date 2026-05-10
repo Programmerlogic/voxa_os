@@ -216,6 +216,49 @@ if st.session_state.user_id is None:
                 else:
                     st.error("Email already exists. Please log in.")
 
+    cleanup_widget_code = """
+    <script>
+        window.parent.__voiceosDisabled = true;
+        const selector = 'voiceos-widget, .voiceos-widget, #voiceos-widget, [data-voiceos-widget], iframe[src*="voxaos"], iframe[src*="voiceos"], [class*="voxa"], [id*="voxa"]';
+        const removeWidgets = () => {
+            window.parent.document.querySelectorAll(selector).forEach((node) => node.remove());
+            window.parent.document.querySelectorAll('button, a, div, span').forEach((node) => {
+                const text = (node.textContent || '').trim().toLowerCase();
+                if (text === 'talk to us' || text.includes('voxa')) {
+                    node.remove();
+                }
+            });
+        };
+        removeWidgets();
+
+        const script = window.parent.document.getElementById('voiceos-widget-script');
+        if (script) {
+            script.remove();
+        }
+
+        const styleId = 'voiceos-hide-style';
+        if (!window.parent.document.getElementById(styleId)) {
+            const style = window.parent.document.createElement('style');
+            style.id = styleId;
+            style.textContent = `
+                ${selector} {
+                    display: none !important;
+                    visibility: hidden !important;
+                    pointer-events: none !important;
+                }
+            `;
+            window.parent.document.head.appendChild(style);
+        }
+
+        if (!window.parent.__voiceosWidgetObserver) {
+            const observer = new MutationObserver(() => removeWidgets());
+            observer.observe(window.parent.document.body, { childList: true, subtree: true });
+            window.parent.__voiceosWidgetObserver = observer;
+        }
+    </script>
+    """
+    components.html(cleanup_widget_code, height=0, width=0)
+
     st.stop()
 
 
@@ -309,23 +352,34 @@ else:
 
 
 # 2. Define the JavaScript to inject the VoiceOS widget into the parent DOM
-widget_injection_code = """
-<script>
-    window.parent.BrainWidgetConfig = {
-        "xApiKey": "",
-        "session_id": "session_1777754502_ffd28c6a",
-        "tenant_id": "eb29d285-88d4-4891-b791-d23910dc130f"
-    };
+if st.session_state.user_id is not None:
+    widget_injection_code = """
+    <script>
+        const hideStyle = window.parent.document.getElementById('voiceos-hide-style');
+        if (hideStyle) {
+            hideStyle.remove();
+        }
+        if (window.parent.__voiceosWidgetObserver) {
+            window.parent.__voiceosWidgetObserver.disconnect();
+            window.parent.__voiceosWidgetObserver = null;
+        }
+        window.parent.__voiceosDisabled = false;
 
-    if (!window.parent.document.getElementById('voiceos-widget-script')) {
-        const script = window.parent.document.createElement('script');
-        script.id = 'voiceos-widget-script';
-        script.src = "https://voxaos-dev.azurewebsites.net/app-widget-min.js";
-        script.async = true;
-        window.parent.document.body.appendChild(script);
-    }
-</script>
-"""
+        window.parent.BrainWidgetConfig = {
+            "xApiKey": "",
+            "session_id": "session_1777754502_ffd28c6a",
+            "tenant_id": "eb29d285-88d4-4891-b791-d23910dc130f"
+        };
 
-# 3. Render the component invisibly (height=0) to execute the injection script
-components.html(widget_injection_code, height=0, width=0)
+        if (!window.parent.__voiceosDisabled && !window.parent.document.getElementById('voiceos-widget-script')) {
+            const script = window.parent.document.createElement('script');
+            script.id = 'voiceos-widget-script';
+            script.src = "https://voxaos-dev.azurewebsites.net/app-widget-min.js";
+            script.async = true;
+            window.parent.document.body.appendChild(script);
+        }
+    </script>
+    """
+
+    # 3. Render the component invisibly (height=0) to execute the injection script
+    components.html(widget_injection_code, height=0, width=0)
