@@ -1,0 +1,47 @@
+Profitability & Cost Optimization Analysis
+
+This section analyzes profit drivers, loss-making products, discount impact, and opportunities for margin optimization.
+
+Key Findings & Trends:
+- Total profit: $286,397.02
+- Total sales: $2,297,200.86
+- Overall profit margin: 12.47%
+- Loss-making orders: 1871 (18.7%)
+- Profitable orders: 8123 (81.3%)
+- Profit by category: {'Technology': 145454.9481, 'Office Supplies': 122490.8008, 'Furniture': 18451.2728}
+
+Top Loss-Making Products:
+- Cubify CubeX 3D Printer Double Head Print: $-8,879.97
+- Lexmark MX611dhe Monochrome Laser Printer: $-4,589.97
+- Cubify CubeX 3D Printer Triple Head Print: $-3,839.99
+- Chromcraft Bull-Nose Wood Oval Conference Tables & Bases: $-2,876.12
+- Bush Advantage Collection Racetrack Conference Table: $-1,934.40
+
+Discount Impact Analysis:
+- Average discount: 15.6%
+- Avg profit with high discount (>30%): $-107.21
+- Avg profit with no discount: $66.90
+
+Actionable Recommendations:
+- Eliminate or reprice loss-making products immediately.
+- Reduce excessive discounts to improve margins.
+- Focus on high-margin categories for promotional budget.
+
+Sample Q&A:
+Q: What is our overall profit margin?
+A: 12.47%
+Q: How many orders are unprofitable?
+A: 1871
+Q: What is the impact of high discounts on profit?
+A: $-107.21 vs $66.90 (no discount)
+Q: Which category is most profitable?
+A: Technology with $145,454.95
+Q: What percentage of orders are profitable?
+A: 81.3%
+
+Sample Data Records (Loss-Making Orders):
+OrderID: CA-2015-163181, Product: Tenex Chairmats For Use with Hard Floors, Sales: $64.96, Discount: 60%, Profit: $-84.45
+OrderID: CA-2017-100615, Product: Master Caster Door Stop, Large Neon Orange, Sales: $14.56, Discount: 60%, Profit: $-6.19
+OrderID: CA-2016-164889, Product: Hon 61000 Series Interactive Training Tables, Sales: $71.09, Discount: 20%, Profit: $-1.78
+OrderID: CA-2016-152289, Product: Hon Deluxe Fabric Upholstered Stacking Chairs, Sales: $1024.72, Discount: 30%, Profit: $-29.28
+OrderID: CA-2016-139157, Product: Chromcraft Bull-Nose Wood 48" x 96" Rectangular Conference Tables, Sales: $330.59, Discount: 40%, Profit: $-115.71

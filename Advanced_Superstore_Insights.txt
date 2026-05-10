@@ -1,0 +1,37 @@
+=== ADVANCED DATA INSIGHTS FOR KNOWLEDGE BASE ===
+
+1. MARKET BASKET ANALYSIS (Top Co-occurring Sub-Categories)
+- Binders & Paper: Bought together in 275 orders
+- Binders & Storage: Bought together in 199 orders
+- Binders & Phones: Bought together in 199 orders
+- Binders & Furnishings: Bought together in 198 orders
+- Paper & Storage: Bought together in 178 orders
+
+2. PRODUCT PORTFOLIO PERFORMANCE (Sub-Category Classification)
+- Accessories: $167,380 Sales, 25.1% Margin -> STAR (High Volume, High Margin)
+- Appliances: $107,532 Sales, 16.9% Margin -> CASH COW (Lower Volume, High Margin)
+- Art: $27,119 Sales, 24.1% Margin -> CASH COW (Lower Volume, High Margin)
+- Binders: $203,413 Sales, 14.9% Margin -> STAR (High Volume, High Margin)
+- Bookcases: $114,880 Sales, -3.0% Margin -> DOG (Lower Volume, Negative Margin)
+- Chairs: $328,449 Sales, 8.1% Margin -> AVERAGE PERFORMER
+- Copiers: $149,528 Sales, 37.2% Margin -> STAR (High Volume, High Margin)
+- Envelopes: $16,476 Sales, 42.3% Margin -> CASH COW (Lower Volume, High Margin)
+- Fasteners: $3,024 Sales, 31.4% Margin -> CASH COW (Lower Volume, High Margin)
+- Furnishings: $91,705 Sales, 14.2% Margin -> CASH COW (Lower Volume, High Margin)
+- Labels: $12,486 Sales, 44.4% Margin -> CASH COW (Lower Volume, High Margin)
+- Machines: $189,239 Sales, 1.8% Margin -> AVERAGE PERFORMER
+- Paper: $78,479 Sales, 43.4% Margin -> CASH COW (Lower Volume, High Margin)
+- Phones: $330,007 Sales, 13.5% Margin -> STAR (High Volume, High Margin)
+- Storage: $223,844 Sales, 9.5% Margin -> AVERAGE PERFORMER
+- Supplies: $46,674 Sales, -2.5% Margin -> DOG (Lower Volume, Negative Margin)
+- Tables: $206,966 Sales, -8.6% Margin -> PROBLEM CHILD (High Volume, Negative Margin)
+
+3. DISCOUNT EFFECTIVENESS & PROFIT ELASTICITY
+- No/Low (0-10%) Discount: Avg Quantity = 3.81, Avg Profit/Item = $67.46, Item Count = 4892
+- Medium (11-30%) Discount: Avg Quantity = 3.74, Avg Profit/Item = $20.68, Item Count = 3936
+- High (31-50%) Discount: Avg Quantity = 3.80, Avg Profit/Item = $-156.28, Item Count = 310
+- Extreme (51-100%) Discount: Avg Quantity = 3.91, Avg Profit/Item = $-89.44, Item Count = 856
+
+4. SEASONALITY & MONTHLY TRENDS
+- Peak Sales Month: Month 11 (November) with $352,461 in sales
+- Lowest Sales Month: Month 2 (February) with $59,751 in sales

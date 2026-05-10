@@ -1,0 +1,40 @@
+Customer Segmentation & Behavior Analysis
+
+This section analyzes customer types, loyalty, repeat purchase behavior, and customer lifetime value to support targeted retention and acquisition strategies.
+
+Key Findings & Trends:
+- Total unique customers: 793
+- Repeat customers: 788 (99.4%)
+- Average order value: $227.87
+- High-value customers (Top 10%): 79
+- Average orders per customer: 12.6
+
+Customer Segments:
+- By type: Consumer, Corporate, Home Office
+  Consumer: 5191 orders (51.9%)
+  Corporate: 3020 orders (30.2%)
+  Home Office: 1783 orders (17.8%)
+
+Actionable Recommendations:
+- Develop loyalty programs targeting high-value customers for retention.
+- Create re-engagement campaigns for single-purchase customers.
+- Offer personalized recommendations based on purchase history.
+
+Sample Q&A:
+Q: How many unique customers do we have?
+A: 793
+Q: What percentage of customers are repeat buyers?
+A: 99.4%
+Q: What is the average order value?
+A: $227.87
+Q: How many orders does the average customer place?
+A: 12.6
+Q: Which customer segment is the largest?
+A: Consumer with 5191 orders
+
+Sample Customer Records:
+CustomerID: DJ-13510, Name: Don Jones, Segment: Corporate, Sales: $15.99
+CustomerID: MD-17350, Name: Maribeth Dona, Segment: Consumer, Sales: $105.42
+CustomerID: NF-18475, Name: Neil Französisch, Segment: Home Office, Sales: $11.42
+CustomerID: PB-18805, Name: Patrick Bzostek, Segment: Home Office, Sales: $45.68
+CustomerID: JP-16135, Name: Julie Prescott, Segment: Home Office, Sales: $76.92

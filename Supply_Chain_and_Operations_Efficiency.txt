@@ -1,0 +1,52 @@
+Supply Chain & Operations Efficiency Analysis
+
+This section analyzes shipping modes, delivery performance, and operational efficiency to optimize fulfillment processes.
+
+Key Findings & Trends:
+Shipping Mode Distribution:
+- Standard Class: 5968 orders (59.7%)
+- Second Class: 1945 orders (19.5%)
+- First Class: 1538 orders (15.4%)
+- Same Day: 543 orders (5.4%)
+
+Average Shipping Time by Mode:
+- First Class: 2.2 days
+- Same Day: 0.0 days
+- Second Class: 3.2 days
+- Standard Class: 5.0 days
+
+Average Profit by Shipping Mode:
+- First Class: $31.84
+- Same Day: $29.27
+- Second Class: $29.54
+- Standard Class: $27.49
+
+Regional Order Volume:
+- Central: 2323 orders
+- East: 2848 orders
+- South: 1620 orders
+- West: 3203 orders
+
+Actionable Recommendations:
+- Prioritize faster shipping modes for high-value orders.
+- Optimize regional warehousing to reduce shipping times.
+- Balance shipping cost vs. profit margin for each mode.
+
+Sample Q&A:
+Q: Which shipping mode is most commonly used?
+A: Standard Class with 5968 orders
+Q: What is the average shipping time?
+A: 2.6 days
+Q: Which region has the most orders?
+A: West with 3203 orders
+Q: Does faster shipping improve profitability?
+A: Variable; Standard Class averages $27.49
+Q: What is the average shipping time for Same Day delivery?
+A: 0.0 days
+
+Sample Data Records (Orders by Region & Shipping):
+OrderID: CA-2015-121720, Region: South, Mode: First Class, Processing Time: 1 days
+OrderID: CA-2017-128160, Region: West, Mode: Second Class, Processing Time: 5 days
+OrderID: CA-2016-119935, Region: Central, Mode: Standard Class, Processing Time: 4 days
+OrderID: CA-2015-117415, Region: Central, Mode: Standard Class, Processing Time: 4 days
+OrderID: CA-2017-167003, Region: West, Mode: Standard Class, Processing Time: 6 days
