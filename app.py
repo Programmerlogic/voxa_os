@@ -1,5 +1,6 @@
 import hashlib
 import os
+import re
 import sqlite3
 from datetime import datetime
 from typing import Optional, Tuple
@@ -105,6 +106,13 @@ def hash_password(password: str, salt: Optional[bytes] = None) -> Tuple[bytes, b
     return salt, pw_hash
 
 
+def is_valid_email(email: str) -> bool:
+    email = email.strip()
+    if not email:
+        return False
+    return re.match(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", email) is not None
+
+
 def register_user(email: str, name: str, password: str) -> bool:
     salt, pw_hash = hash_password(password)
     created_at = datetime.utcnow().isoformat()
@@ -175,7 +183,11 @@ if st.session_state.user_id is None:
                 login_submit = st.form_submit_button("Sign In", use_container_width=True)
             
             if login_submit:
-                result = verify_user(login_email.strip().lower(), login_password)
+                login_email_clean = login_email.strip().lower()
+                if not is_valid_email(login_email_clean):
+                    st.error("Please enter a valid email address.")
+                else:
+                    result = verify_user(login_email_clean, login_password)
                 if result is None:
                     st.error("Invalid email or password.")
                 else:
@@ -197,6 +209,8 @@ if st.session_state.user_id is None:
                 email_normalized = reg_email.strip().lower()
                 if not name_clean or not email_normalized or not reg_password:
                     st.error("Full name, email, and password are required.")
+                elif not is_valid_email(email_normalized):
+                    st.error("Please enter a valid email address.")
                 elif register_user(email_normalized, name_clean, reg_password):
                     st.success("Account created successfully! You can now log in.")
                 else:
