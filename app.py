@@ -311,114 +311,19 @@ else:
 # 2. Define the JavaScript to inject the VoiceOS widget into the parent DOM
 widget_injection_code = """
 <script>
-    (function() {
-        const widgetSelectors = [
-            'voiceos-widget',
-            '.voiceos-widget',
-            '#voiceos-widget',
-            '[data-voiceos-widget]'
-        ];
-        const selectorList = widgetSelectors.join(',');
+    window.parent.BrainWidgetConfig = {
+        "xApiKey": "",
+        "session_id": "session_1777754502_ffd28c6a",
+        "tenant_id": "eb29d285-88d4-4891-b791-d23910dc130f"
+    };
 
-        const removeDuplicateWidgets = () => {
-            const widgetNodes = window.parent.document.querySelectorAll(selectorList);
-            if (widgetNodes.length > 1) {
-                widgetNodes.forEach((node, index) => {
-                    if (index > 0) node.remove();
-                });
-            }
-        };
-
-        removeDuplicateWidgets();
-
-        const existingScript = window.parent.document.getElementById('voiceos-widget-script');
-        const widgetExists = window.parent.document.querySelector(selectorList);
-        if (window.parent.__voiceosWidgetInitialized && widgetExists) {
-            // Avoid reinitializing the widget on Streamlit reruns.
-            return;
-        }
-
-        const styleId = 'voiceos-widget-style';
-        if (!window.parent.document.getElementById(styleId)) {
-            const style = window.parent.document.createElement('style');
-            style.id = styleId;
-            style.textContent = `
-                voiceos-widget, .voiceos-widget, #voiceos-widget, [data-voiceos-widget] {
-                    z-index: 2147483647 !important;
-                }
-                voiceos-widget iframe, .voiceos-widget iframe, #voiceos-widget iframe, [data-voiceos-widget] iframe {
-                    max-width: 100vw !important;
-                    max-height: 100vh !important;
-                }
-                voiceos-widget[maximized],
-                voiceos-widget[fullscreen],
-                voiceos-widget[expanded],
-                .voiceos-widget.maximized,
-                .voiceos-widget.fullscreen,
-                .voiceos-widget.expanded,
-                .voiceos-widget--maximized,
-                .voiceos-widget--fullscreen,
-                .voiceos-widget--expanded,
-                #voiceos-widget.maximized,
-                #voiceos-widget.fullscreen,
-                #voiceos-widget.expanded,
-                [data-voiceos-widget][data-state="maximized"],
-                [data-voiceos-widget][data-state="fullscreen"],
-                [data-voiceos-widget][data-state="expanded"] {
-                    position: fixed !important;
-                    inset: 0 !important;
-                    width: 100vw !important;
-                    height: 100vh !important;
-                    max-width: 100vw !important;
-                    max-height: 100vh !important;
-                    border-radius: 0 !important;
-                }
-                voiceos-widget[maximized] iframe,
-                voiceos-widget[fullscreen] iframe,
-                voiceos-widget[expanded] iframe,
-                .voiceos-widget.maximized iframe,
-                .voiceos-widget.fullscreen iframe,
-                .voiceos-widget.expanded iframe,
-                .voiceos-widget--maximized iframe,
-                .voiceos-widget--fullscreen iframe,
-                .voiceos-widget--expanded iframe,
-                #voiceos-widget.maximized iframe,
-                #voiceos-widget.fullscreen iframe,
-                #voiceos-widget.expanded iframe,
-                [data-voiceos-widget][data-state="maximized"] iframe,
-                [data-voiceos-widget][data-state="fullscreen"] iframe,
-                [data-voiceos-widget][data-state="expanded"] iframe {
-                    width: 100vw !important;
-                    height: 100vh !important;
-                    max-width: 100vw !important;
-                    max-height: 100vh !important;
-                    border-radius: 0 !important;
-                }
-            `;
-            window.parent.document.head.appendChild(style);
-        }
-
-        if (!existingScript || !widgetExists) {
-            window.parent.BrainWidgetConfig = {
-                "xApiKey": "",
-                "session_id": "session_1777754502_ffd28c6a",
-                "tenant_id": "eb29d285-88d4-4891-b791-d23910dc130f"
-            };
-
-            const script = window.parent.document.createElement('script');
-            script.id = 'voiceos-widget-script';
-            script.src = "https://voxaos-dev.azurewebsites.net/app-widget-min.js";
-            script.async = true;
-            script.onload = () => {
-                window.parent.__voiceosWidgetInitialized = true;
-                removeDuplicateWidgets();
-            };
-            script.onerror = () => {
-                window.parent.__voiceosWidgetInitialized = false;
-            };
-            window.parent.document.body.appendChild(script);
-        }
-    })();
+    if (!window.parent.document.getElementById('voiceos-widget-script')) {
+        const script = window.parent.document.createElement('script');
+        script.id = 'voiceos-widget-script';
+        script.src = "https://voxaos-dev.azurewebsites.net/app-widget-min.js";
+        script.async = true;
+        window.parent.document.body.appendChild(script);
+    }
 </script>
 """
 
